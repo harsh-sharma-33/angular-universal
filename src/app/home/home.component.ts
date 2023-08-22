@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  /**
+   * Function shows how to set meta tags and dynamic routes for static routes
+   */
   setMetaTags() {
     this.metaDataService.addTags([{
       name: 'tag1', content: 'value1'

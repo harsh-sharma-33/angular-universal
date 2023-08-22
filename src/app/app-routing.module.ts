@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
+import { postGuard } from './post.guard';
 
 const routes: Routes = [
   {
@@ -11,13 +11,19 @@ const routes: Routes = [
   },
   {
     path: 'post/:id',
-    component: PostComponent
+    component: PostComponent,
+    resolve: {
+      post: postGuard
+    }
 
-  }
+  },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
